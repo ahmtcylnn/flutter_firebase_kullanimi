@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "789061354349",
+    "firebase_url": "https://fir-kullanimi-9c0a6-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "fir-kullanimi-9c0a6",
+    "storage_bucket": "fir-kullanimi-9c0a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789061354349:android:61bfdd192d80e90b481064",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase_kullanimi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789061354349-qtm37r1mn110khr24bcbbvivgv6sfv91.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBko05LmdrH36QSSMJqFgIIyz96XSkqvoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789061354349-qtm37r1mn110khr24bcbbvivgv6sfv91.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
