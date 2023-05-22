@@ -5,7 +5,7 @@ class Kisiler {
   late int kisi_yas;
 
   Kisiler(this.kisi_ad, this.kisi_yas);
-
+// Burada veritabanındaki veriler parse edilip maindeki fonksiyona gönderiliyor.
   factory Kisiler.fromJson(Map<dynamic, dynamic> json) {
     return Kisiler(json["kisi_ad"] as String, json["kisi_yas"] as int);
   }
