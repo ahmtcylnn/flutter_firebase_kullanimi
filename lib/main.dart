@@ -43,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
 // Veritabanına kodlama sırasında aldığı veriyi ekler.
   Future<void> kisiEkle() async {
     var bilgi = HashMap<String, dynamic>();
-    bilgi["kisi_ad"] = "İlda";
-    bilgi["kisi_yas"] = 6;
+    bilgi["kisi_ad"] = "Emirhan";
+    bilgi["kisi_yas"] = 31;
     refKisiler.push().set(bilgi);
   }
 
@@ -97,6 +97,29 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+// Veritabanındaki nesnenin istediğimiz özelliğine göre aramasını yapabiliyoruz.
+//"kisiler_tablo": {
+  //".indexOn": "kisi_ad",   Firebase kurallar kısmına bu kod parçacığını yerleştirdik.
+  Future<void> esitlikArama() async {
+    var sorgu = refKisiler.orderByChild("kisi_ad").equalTo(
+        "Emirhan"); // Hangi özelliğine bakılacağı burada orderByChild metodunun içinde belirleniyor.
+
+    sorgu.onValue.listen((event) {
+      var gelenDegerler = event.snapshot.value as dynamic;
+
+      if (gelenDegerler != null) {
+        gelenDegerler.forEach((key, nesne) {
+          var gelenKisi = Kisiler.fromJson(nesne);
+
+          print("*************");
+          print("Kişi key: $key");
+          print("Kişi ad: ${gelenKisi.kisi_ad}");
+          print("Kişi yaş: ${gelenKisi.kisi_yas}");
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -105,6 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //kisiGuncelle();
     //tumKisiler();
     //tumKisilerOnce();
+    //esitlikArama();
   }
 
   @override
