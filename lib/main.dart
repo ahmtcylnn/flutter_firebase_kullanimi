@@ -120,6 +120,48 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  // Baştan belli sayıda veriyi almak için kullanılan method
+  Future<void> limitliVeri() async {
+    var sorgu = refKisiler.limitToFirst(
+        2); // Hangi özelliğine bakılacağı burada orderByChild metodunun içinde belirleniyor.
+
+    sorgu.onValue.listen((event) {
+      var gelenDegerler = event.snapshot.value as dynamic;
+
+      if (gelenDegerler != null) {
+        gelenDegerler.forEach((key, nesne) {
+          var gelenKisi = Kisiler.fromJson(nesne);
+
+          print("*************");
+          print("Kişi key: $key");
+          print("Kişi ad: ${gelenKisi.kisi_ad}");
+          print("Kişi yaş: ${gelenKisi.kisi_yas}");
+        });
+      }
+    });
+  }
+
+  // Sondan belli sayıda veriyi almak için kullanılan method
+  Future<void> limitliVeriSondan() async {
+    var sorgu = refKisiler.limitToLast(
+        2); // Hangi özelliğine bakılacağı burada orderByChild metodunun içinde belirleniyor.
+
+    sorgu.onValue.listen((event) {
+      var gelenDegerler = event.snapshot.value as dynamic;
+
+      if (gelenDegerler != null) {
+        gelenDegerler.forEach((key, nesne) {
+          var gelenKisi = Kisiler.fromJson(nesne);
+
+          print("*************");
+          print("Kişi key: $key");
+          print("Kişi ad: ${gelenKisi.kisi_ad}");
+          print("Kişi yaş: ${gelenKisi.kisi_yas}");
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -129,6 +171,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //tumKisiler();
     //tumKisilerOnce();
     //esitlikArama();
+    //limitliVeri();
+    limitliVeriSondan();
   }
 
   @override
