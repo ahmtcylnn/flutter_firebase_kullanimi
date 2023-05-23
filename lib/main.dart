@@ -162,6 +162,27 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+// Değer aralığını çekme
+  Future<void> degerAraligi() async {
+    var sorgu = refKisiler.orderByChild("kisi_yas").startAt(18).endAt(
+        30); // startAt ve endAt kullanarak kaçtan kaça kadar alınacağın belirliyoruz.
+
+    sorgu.onValue.listen((event) {
+      var gelenDegerler = event.snapshot.value as dynamic;
+
+      if (gelenDegerler != null) {
+        gelenDegerler.forEach((key, nesne) {
+          var gelenKisi = Kisiler.fromJson(nesne);
+
+          print("*************");
+          print("Kişi key: $key");
+          print("Kişi ad: ${gelenKisi.kisi_ad}");
+          print("Kişi yaş: ${gelenKisi.kisi_yas}");
+        });
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -172,7 +193,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //tumKisilerOnce();
     //esitlikArama();
     //limitliVeri();
-    limitliVeriSondan();
+    //limitliVeriSondan();
+    //degerAraligi();
   }
 
   @override
